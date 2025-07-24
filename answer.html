@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Answer</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="answer-card slide-in">
+      <h2 id="question-text">Question</h2>
+      <p id="answer-text">Answer</p>
+      <button onclick="goBack()" class="back-btn">← Back</button>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script>
+    function goBack() {
+      window.location.href = 'index.html';
+    }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = urlParams.get('id');
+    const question = questions[+id];
+
+    if (question) {
+      document.getElementById('question-text').textContent = question.q;
+      document.getElementById('answer-text').textContent = question.a;
+    }
+  </script>
+</body>
+</html>
