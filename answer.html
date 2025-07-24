@@ -16,19 +16,18 @@
   </div>
 
   <script src="data.js"></script>
-  <script>
-    function goBack() {
-      window.location.href = 'index.html';
-    }
+<script>
+  function goBack() {
+    window.location.href = 'index.html';
+  }
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const id = urlParams.get('id');
-    const question = questions[+id];
+  const selected = JSON.parse(localStorage.getItem('selectedQuestion'));
 
-    if (question) {
-      document.getElementById('question-text').textContent = question.q;
-      document.getElementById('answer-text').textContent = question.a;
-    }
-  </script>
+  if (selected) {
+    document.getElementById('question-text').textContent = selected.q;
+    document.getElementById('answer-text').textContent = selected.a;
+  }
+</script>
+
 </body>
 </html>

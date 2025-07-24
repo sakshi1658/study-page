@@ -14,6 +14,15 @@
       <div id="question-list" class="card-container"></div>
     </div>
 
+    <button class="add-btn" onclick="toggleForm()">+ Add Question</button>
+
+<div class="form-container" id="form-container">
+  <input type="text" id="new-question" placeholder="Enter question" />
+  <textarea id="new-answer" placeholder="Enter answer"></textarea>
+  <button onclick="addNewQuestion()">Save</button>
+</div>
+
+
     <script src="data.js"></script>
     <script src="script.js"></script>
   </body>
