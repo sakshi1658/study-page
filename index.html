@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interview Questions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>📘 Interview Q&A</h1>
+    <p class="subtitle">Tap on a question to reveal the answer</p>
+
+    <div class="qa-card">
+      <button class="question">What is Angular?</button>
+      <div class="answer">
+        Angular is a TypeScript-based open-source web application framework developed by Google. It helps developers build single-page applications by binding the model (data) and the view (UI) using two-way data binding.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="question">What is closure in JavaScript?</button>
+      <div class="answer">
+        A closure is a function that has access to its own scope, the outer function's scope, and the global scope. It allows a function to remember variables from the outer scope even after the outer function has finished execution.
+      </div>
+    </div>
+
+    <div class="qa-card">
+      <button class="question">Difference between var, let, and const?</button>
+      <div class="answer">
+        <ul>
+          <li><strong>var:</strong> Function-scoped, can be redeclared.</li>
+          <li><strong>let:</strong> Block-scoped, can be reassigned but not redeclared in the same scope.</li>
+          <li><strong>const:</strong> Block-scoped, cannot be reassigned or redeclared.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Add more Q&A cards here -->
+
+  </div>
+
+  <script>
+    const questions = document.querySelectorAll(".question");
+
+    questions.forEach(q => {
+      q.addEventListener("click", () => {
+        const answer = q.nextElementSibling;
+        answer.classList.toggle("active");
+      });
+    });
+  </script>
+</body>
+</html>
