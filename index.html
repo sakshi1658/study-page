@@ -7,6 +7,18 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="floating-letters">
+      <span class="float-letter">Q</span>
+      <span class="float-letter">A</span>
+      <span class="float-letter">?</span>
+      <span class="float-letter">Q</span>
+      <span class="float-letter">A</span>
+      <span class="float-letter"> ❓</span>
+      <span class="float-letter">✨🧠</span>
+      <span class="float-letter"> 📚</span>
+      <span class="float-letter"> 💡🔎</span>
+      <span class="float-letter"> 🎯</span>
+    </div>
     <div class="container">
       <h1>📘 Interview Q&A</h1>
       <br />
@@ -16,14 +28,56 @@
 
     <button class="add-btn" onclick="toggleForm()">+ Add Question</button>
 
-<div class="form-container" id="form-container">
-  <input type="text" id="new-question" placeholder="Enter question" />
-  <textarea id="new-answer" placeholder="Enter answer"></textarea>
-  <button onclick="addNewQuestion()">Save</button>
-</div>
-
+    <div class="form-container" id="form-container">
+      <input type="text" id="new-question" placeholder="Enter question" />
+      <textarea id="new-answer" placeholder="Enter answer"></textarea>
+      <button onclick="addNewQuestion()">Save</button>
+    </div>
 
     <script src="data.js"></script>
     <script src="script.js"></script>
+    <script>
+      // --- Floating Letters Interactivity ---
+      const floating = document.querySelector(".floating-letters");
+      const letters = ["Q", "A", "?", "!", "Js", "mat", "ngx", "P", "H", "T"];
+      // Parallax effect
+      document.addEventListener("mousemove", (e) => {
+        const x = e.clientX / window.innerWidth - 0.5;
+        const y = e.clientY / window.innerHeight - 0.5;
+        document.querySelectorAll(".float-letter").forEach((el, i) => {
+          el.style.transform = `translateY(-50%) translateX(-50%) translate(${
+            x * (30 + i * 10)
+          }px, ${y * (30 + i * 10)}px)`;
+        });
+        // Occasionally pop a new letter
+        if (Math.random() < 0.08) {
+          spawnFloatingLetter(e.clientX, e.clientY);
+        }
+      });
+      // Spawn a new floating letter at (x, y)
+      function spawnFloatingLetter(x, y) {
+        const span = document.createElement("span");
+        span.className = "float-letter pop";
+        span.textContent = letters[Math.floor(Math.random() * letters.length)];
+        span.style.left = x + (Math.random() - 0.5) * 120 + "px";
+        span.style.top = y + (Math.random() - 0.5) * 120 + "px";
+        span.style.fontSize = 7 + Math.random() * 7 + "vw";
+        span.style.color = [
+          "#3498db44",
+          "#e67e2244",
+          "#2ecc7144",
+          "#9b59b644",
+          "#34495e44",
+          "#f1c40f44",
+          "#e74c3c44",
+        ][Math.floor(Math.random() * 7)];
+        floating.appendChild(span);
+        setTimeout(() => {
+          span.style.opacity = 0;
+          span.style.transform += " scale(1.2)";
+        }, 1200);
+        setTimeout(() => floating.removeChild(span), 2000);
+      }
+    </script>
   </body>
 </html>
